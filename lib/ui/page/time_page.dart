@@ -12,7 +12,6 @@ class TimePage extends StatelessWidget {
   Widget build(BuildContext context) {
     Widget timeHours() {
       return SizedBox(
-        width: 73,
         height: 50,
         child: Row(
           children: [
@@ -20,11 +19,12 @@ class TimePage extends StatelessWidget {
               width: 34,
               height: 49,
               decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(8),
-              ),
-              child: Text(
-                "0",
-                style: timeTextStyle.copyWith(fontSize: 30),
+                  borderRadius: BorderRadius.circular(8), color: whiteColor),
+              child: Center(
+                child: Text(
+                  "0",
+                  style: timeTextStyle.copyWith(fontSize: 30),
+                ),
               ),
             ),
             const SizedBox(width: 5),
@@ -32,42 +32,46 @@ class TimePage extends StatelessWidget {
               width: 34,
               height: 49,
               decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(8),
-              ),
-              child: Text(
-                "1",
-                style: timeTextStyle.copyWith(fontSize: 30),
+                  borderRadius: BorderRadius.circular(8), color: whiteColor),
+              child: Center(
+                child: Text(
+                  "1",
+                  style: timeTextStyle.copyWith(fontSize: 30),
+                ),
               ),
             ),
-            SizedBox(
-              width: 64,
-              height: 42,
-              child: Column(
-                children: [
-                  Text(
-                    "hour(s)",
-                    style: blackTextStyle.copyWith(fontSize: 18),
-                  ),
-                  Row(
-                    children: [
-                      GestureDetector(
-                        onTap: () {},
-                        child: Image.asset(
-                          plusIcon,
-                          color: blackText,
-                        ),
+            const SizedBox(width: 10),
+            Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Text(
+                  "hour(s)",
+                  style: blackTextStyle.copyWith(fontSize: 18),
+                ),
+                Row(
+                  children: [
+                    GestureDetector(
+                      onTap: () {},
+                      child: Image.asset(
+                        minusIcon,
+                        color: blackText,
+                        width: 18,
+                        height: 18,
                       ),
-                      GestureDetector(
-                        onTap: () {},
-                        child: Image.asset(
-                          minusIcon,
-                          color: blackText,
-                        ),
+                    ),
+                    const SizedBox(width: 14),
+                    GestureDetector(
+                      onTap: () {},
+                      child: Image.asset(
+                        plusIcon,
+                        color: blackText,
+                        width: 18,
+                        height: 18,
                       ),
-                    ],
-                  )
-                ],
-              ),
+                    ),
+                  ],
+                )
+              ],
             )
           ],
         ),
@@ -76,7 +80,6 @@ class TimePage extends StatelessWidget {
 
     Widget timeMinutes() {
       return SizedBox(
-        width: 73,
         height: 50,
         child: Row(
           children: [
@@ -84,11 +87,12 @@ class TimePage extends StatelessWidget {
               width: 34,
               height: 49,
               decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(8),
-              ),
-              child: Text(
-                "0",
-                style: timeTextStyle.copyWith(fontSize: 30),
+                  borderRadius: BorderRadius.circular(8), color: whiteColor),
+              child: Center(
+                child: Text(
+                  "0",
+                  style: timeTextStyle.copyWith(fontSize: 30),
+                ),
               ),
             ),
             const SizedBox(width: 5),
@@ -96,42 +100,46 @@ class TimePage extends StatelessWidget {
               width: 34,
               height: 49,
               decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(8),
-              ),
-              child: Text(
-                "0",
-                style: timeTextStyle.copyWith(fontSize: 30),
+                  borderRadius: BorderRadius.circular(8), color: whiteColor),
+              child: Center(
+                child: Text(
+                  "0",
+                  style: timeTextStyle.copyWith(fontSize: 30),
+                ),
               ),
             ),
-            SizedBox(
-              width: 87,
-              height: 42,
-              child: Column(
-                children: [
-                  Text(
-                    "minute(s)",
-                    style: blackTextStyle.copyWith(fontSize: 18),
-                  ),
-                  Row(
-                    children: [
-                      GestureDetector(
-                        onTap: () {},
-                        child: Image.asset(
-                          plusIcon,
-                          color: blackText,
-                        ),
+            const SizedBox(width: 10),
+            Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Text(
+                  "minute(s)",
+                  style: blackTextStyle.copyWith(fontSize: 18),
+                ),
+                Row(
+                  children: [
+                    GestureDetector(
+                      onTap: () {},
+                      child: Image.asset(
+                        minusIcon,
+                        color: blackText,
+                        width: 18,
+                        height: 18,
                       ),
-                      GestureDetector(
-                        onTap: () {},
-                        child: Image.asset(
-                          minusIcon,
-                          color: blackText,
-                        ),
+                    ),
+                    const SizedBox(width: 14),
+                    GestureDetector(
+                      onTap: () {},
+                      child: Image.asset(
+                        plusIcon,
+                        color: blackText,
+                        width: 18,
+                        height: 18,
                       ),
-                    ],
-                  )
-                ],
-              ),
+                    ),
+                  ],
+                )
+              ],
             )
           ],
         ),
@@ -143,7 +151,7 @@ class TimePage extends StatelessWidget {
       body: Container(
         margin: const EdgeInsets.symmetric(horizontal: 27),
         child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
+          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
           children: [
             Text(
               "How much time do you want to spend?",
@@ -151,14 +159,24 @@ class TimePage extends StatelessWidget {
                   blackTextStyle.copyWith(fontSize: 24, fontWeight: semiBold),
             ),
             Container(
-              width: 221,
-              height: 221,
+              width: 250,
+              height: 250,
               decoration: BoxDecoration(
                 shape: BoxShape.circle,
                 color: orangeText,
               ),
-              child: Column(
-                children: [timeHours(), timeMinutes()],
+              child: Center(
+                child: SizedBox(
+                  width: 172,
+                  height: 117,
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      timeHours(),
+                      timeMinutes(),
+                    ],
+                  ),
+                ),
               ),
             ),
             CustomButton(

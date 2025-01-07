@@ -5,7 +5,7 @@ import 'ui/page/person_page.dart';
 import 'ui/page/place_page.dart';
 import 'ui/page/start_page.dart';
 import 'ui/page/time_page.dart';
-import 'ui/widget/result_page.dart';
+import 'ui/page/result_page.dart';
 
 void main() {
   runApp(MaterialApp(

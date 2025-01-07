@@ -3,8 +3,8 @@ import 'package:flutter/material.dart';
 import '../../theme/color.dart';
 import '../../theme/fonts.dart';
 import '../../theme/image.dart';
-import 'custom_button.dart';
-import 'custom_place_button.dart';
+import '../widget/custom_button.dart';
+import '../widget/custom_place_button.dart';
 
 class ResultPage extends StatelessWidget {
   const ResultPage({super.key});
