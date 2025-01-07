@@ -140,29 +140,36 @@ class TimePage extends StatelessWidget {
 
     return Scaffold(
       backgroundColor: backgroundColor,
-      body: Column(
-        children: [
-          Text(
-            "How much time do you want to spend?",
-            style: blackTextStyle.copyWith(fontSize: 24, fontWeight: semiBold),
-          ),
-          Container(
-            width: 221,
-            height: 221,
-            decoration: BoxDecoration(
-              shape: BoxShape.circle,
-              color: orangeText,
+      body: Container(
+        margin: const EdgeInsets.symmetric(horizontal: 27),
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            Text(
+              "How much time do you want to spend?",
+              style:
+                  blackTextStyle.copyWith(fontSize: 24, fontWeight: semiBold),
             ),
-            child: Column(
-              children: [timeHours(), timeMinutes()],
+            Container(
+              width: 221,
+              height: 221,
+              decoration: BoxDecoration(
+                shape: BoxShape.circle,
+                color: orangeText,
+              ),
+              child: Column(
+                children: [timeHours(), timeMinutes()],
+              ),
             ),
-          ),
-          CustomButton(
-            width: 200,
-            text: "Next",
-            function: () {},
-          )
-        ],
+            CustomButton(
+              width: 200,
+              text: "Next",
+              function: () {
+                Navigator.pushNamed(context, "PlacePage");
+              },
+            )
+          ],
+        ),
       ),
     );
   }
