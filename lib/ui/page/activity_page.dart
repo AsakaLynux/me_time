@@ -14,16 +14,18 @@ class ActivityPage extends StatelessWidget {
       backgroundColor: backgroundColor,
       body: Center(
         child: Container(
-          width: 255,
-          height: 484,
+          height: 550,
           margin: const EdgeInsets.symmetric(horizontal: 10),
           child: Column(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
-              Text(
-                "We recommend doing these things",
-                style:
-                    blackTextStyle.copyWith(fontSize: 24, fontWeight: semiBold),
+              SizedBox(
+                width: 280,
+                child: Text(
+                  "We recommend doing these things",
+                  style: blackTextStyle.copyWith(
+                      fontSize: 24, fontWeight: semiBold),
+                ),
               ),
               SizedBox(
                 width: 355,
@@ -48,9 +50,9 @@ class ActivityPage extends StatelessWidget {
                       padding: const EdgeInsets.all(13),
                       decoration: BoxDecoration(
                         borderRadius: BorderRadius.circular(20),
-                        color: cardBackground,
+                        color: clockColor,
                         border: Border.all(
-                          color: Colors.pinkAccent,
+                          color: cardBackground,
                         ),
                       ),
                       child: Column(
@@ -60,7 +62,7 @@ class ActivityPage extends StatelessWidget {
                             height: 144,
                             decoration: BoxDecoration(
                               borderRadius: BorderRadius.circular(10),
-                              color: Colors.grey,
+                              color: Colors.white,
                             ),
                           ),
                           Text(

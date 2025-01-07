@@ -12,10 +12,12 @@ class PersonPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: backgroundColor,
-      body: Container(
-        margin: const EdgeInsets.symmetric(horizontal: 55),
-        child: Center(
+      body: Center(
+        child: Container(
+          height: 550,
+          margin: const EdgeInsets.symmetric(horizontal: 55),
           child: Column(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
               Text(
                 "How many people are you spending your time with?",
@@ -27,84 +29,97 @@ class PersonPage extends StatelessWidget {
                 height: 221,
                 child: Stack(
                   children: [
-                    Container(
-                      width: 221,
-                      height: 221,
-                      decoration: BoxDecoration(
-                        shape: BoxShape.circle,
-                        color: clockColor,
-                      ),
-                      child: Column(
-                        children: [
-                          Image.asset(stickmanIcon, width: 111, height: 111),
-                          SizedBox(
-                            width: 74,
-                            height: 54,
-                            child: Row(
-                              children: [
-                                Container(
-                                  width: 34,
-                                  height: 49,
-                                  decoration: BoxDecoration(
-                                    borderRadius: BorderRadius.circular(8),
-                                    color: whiteColor,
+                    Center(
+                      child: Container(
+                        width: 221,
+                        height: 221,
+                        decoration: BoxDecoration(
+                          shape: BoxShape.circle,
+                          color: clockColor,
+                        ),
+                        child: Column(
+                          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                          crossAxisAlignment: CrossAxisAlignment.center,
+                          children: [
+                            Image.asset(stickmanIcon, width: 111, height: 111),
+                            SizedBox(
+                              width: 74,
+                              height: 54,
+                              child: Row(
+                                children: [
+                                  Container(
+                                    width: 34,
+                                    height: 49,
+                                    decoration: BoxDecoration(
+                                      borderRadius: BorderRadius.circular(8),
+                                      color: whiteColor,
+                                    ),
+                                    child: Center(
+                                      child: Text(
+                                        "0",
+                                        style: timeTextStyle.copyWith(
+                                            fontSize: 30),
+                                      ),
+                                    ),
                                   ),
-                                  child: Text(
-                                    "0",
-                                    style: timeTextStyle.copyWith(fontSize: 30),
+                                  const SizedBox(width: 5),
+                                  Container(
+                                    width: 34,
+                                    height: 49,
+                                    decoration: BoxDecoration(
+                                      borderRadius: BorderRadius.circular(8),
+                                      color: whiteColor,
+                                    ),
+                                    child: Center(
+                                      child: Text(
+                                        "0",
+                                        style: timeTextStyle.copyWith(
+                                            fontSize: 30),
+                                      ),
+                                    ),
                                   ),
-                                ),
-                                Container(
-                                  width: 34,
-                                  height: 49,
-                                  decoration: BoxDecoration(
-                                    borderRadius: BorderRadius.circular(8),
-                                    color: whiteColor,
-                                  ),
-                                  child: Text(
-                                    "0",
-                                    style: timeTextStyle.copyWith(fontSize: 30),
-                                  ),
-                                ),
-                              ],
+                                ],
+                              ),
                             ),
-                          ),
-                        ],
+                          ],
+                        ),
                       ),
                     ),
                     Center(
                       child: SizedBox(
-                        width: 262,
+                        width: 255,
                         height: 41,
                         child: Row(
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           children: [
-                            Container(
-                              width: 40,
-                              height: 40,
-                              decoration: BoxDecoration(
-                                shape: BoxShape.circle,
-                                color: buttonBackgroundColor,
-                              ),
-                              child: Image.asset(
-                                minusIcon,
-                                width: 30,
-                                height: 30,
-                                color: whiteColor,
+                            GestureDetector(
+                              onTap: () {},
+                              child: Container(
+                                width: 40,
+                                height: 40,
+                                decoration: BoxDecoration(
+                                  shape: BoxShape.circle,
+                                  color: buttonBackgroundColor,
+                                ),
+                                child: Image.asset(
+                                  minusIcon,
+                                  color: whiteColor,
+                                ),
                               ),
                             ),
-                            Container(
-                              width: 40,
-                              height: 40,
-                              decoration: BoxDecoration(
-                                shape: BoxShape.circle,
-                                color: buttonBackgroundColor,
-                              ),
-                              child: Image.asset(
-                                plusIcon,
-                                width: 30,
-                                height: 30,
-                                color: whiteColor,
+                            GestureDetector(
+                              onTap: () {},
+                              child: Container(
+                                width: 40,
+                                height: 40,
+                                decoration: BoxDecoration(
+                                  shape: BoxShape.circle,
+                                  color: buttonBackgroundColor,
+                                ),
+                                child: Image.asset(
+                                  plusIcon,
+                                  color: whiteColor,
+                                ),
                               ),
                             )
                           ],

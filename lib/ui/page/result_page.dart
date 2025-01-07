@@ -16,10 +16,10 @@ class ResultPage extends StatelessWidget {
       body: Center(
         child: Container(
           width: 325,
-          height: 583,
+          height: 550,
           margin: const EdgeInsets.symmetric(horizontal: 25),
           child: Column(
-            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
               RichText(
                 text: TextSpan(
@@ -47,12 +47,13 @@ class ResultPage extends StatelessWidget {
                 ),
               ),
               SizedBox(
-                width: 325,
-                height: 348,
+                // width: 325,
+                height: 300,
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
                     Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
                         Container(
                           width: 153,
@@ -62,6 +63,7 @@ class ResultPage extends StatelessWidget {
                             color: clockColor,
                           ),
                           child: Column(
+                            mainAxisAlignment: MainAxisAlignment.center,
                             children: [
                               Image.asset(
                                 clockIcon,
@@ -76,10 +78,42 @@ class ResultPage extends StatelessWidget {
                                 ),
                               ),
                               Text(
-                                "1 Hour",
+                                "1h",
                                 style: blackTextStyle.copyWith(
                                   fontSize: 24,
-                                  fontWeight: medium,
+                                  fontWeight: semiBold,
+                                ),
+                              ),
+                            ],
+                          ),
+                        ),
+                        Container(
+                          width: 153,
+                          height: 209,
+                          decoration: BoxDecoration(
+                            borderRadius: BorderRadius.circular(20),
+                            color: clockColor,
+                          ),
+                          child: Column(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: [
+                              Image.asset(
+                                stickmanIcon,
+                                width: 66,
+                                height: 66,
+                              ),
+                              Text(
+                                "quota",
+                                style: blackTextStyle.copyWith(
+                                  fontSize: 24,
+                                  fontWeight: light,
+                                ),
+                              ),
+                              Text(
+                                "1 person",
+                                style: blackTextStyle.copyWith(
+                                  fontSize: 24,
+                                  fontWeight: semiBold,
                                 ),
                               ),
                             ],

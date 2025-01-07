@@ -148,45 +148,48 @@ class TimePage extends StatelessWidget {
 
     return Scaffold(
       backgroundColor: backgroundColor,
-      body: Container(
-        margin: const EdgeInsets.symmetric(horizontal: 27),
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-          children: [
-            Text(
-              "How much time do you want to spend?",
-              style:
-                  blackTextStyle.copyWith(fontSize: 24, fontWeight: semiBold),
-            ),
-            Container(
-              width: 250,
-              height: 250,
-              decoration: BoxDecoration(
-                shape: BoxShape.circle,
-                color: orangeText,
+      body: Center(
+        child: Container(
+          height: 550,
+          margin: const EdgeInsets.symmetric(horizontal: 27),
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+              Text(
+                "How much time do you want to spend?",
+                style:
+                    blackTextStyle.copyWith(fontSize: 24, fontWeight: semiBold),
               ),
-              child: Center(
-                child: SizedBox(
-                  width: 172,
-                  height: 117,
-                  child: Column(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      timeHours(),
-                      timeMinutes(),
-                    ],
+              Container(
+                width: 250,
+                height: 250,
+                decoration: BoxDecoration(
+                  shape: BoxShape.circle,
+                  color: clockColor,
+                ),
+                child: Center(
+                  child: SizedBox(
+                    width: 172,
+                    height: 117,
+                    child: Column(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        timeHours(),
+                        timeMinutes(),
+                      ],
+                    ),
                   ),
                 ),
               ),
-            ),
-            CustomButton(
-              width: 200,
-              text: "Next",
-              function: () {
-                Navigator.pushNamed(context, "PlacePage");
-              },
-            )
-          ],
+              CustomButton(
+                width: 200,
+                text: "Next",
+                function: () {
+                  Navigator.pushNamed(context, "PlacePage");
+                },
+              )
+            ],
+          ),
         ),
       ),
     );

@@ -12,38 +12,40 @@ class PlacePage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: backgroundColor,
-      body: Container(
-        height: 472,
-        margin: const EdgeInsets.symmetric(horizontal: 30),
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-          children: [
-            Text(
-              "Where do you want to do your activity?",
-              style: blackTextStyle.copyWith(
-                fontSize: 24,
-                fontWeight: semiBold,
+      body: Center(
+        child: Container(
+          height: 550,
+          margin: const EdgeInsets.symmetric(horizontal: 30),
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+              Text(
+                "Where do you want to do your activity?",
+                style: blackTextStyle.copyWith(
+                  fontSize: 24,
+                  fontWeight: semiBold,
+                ),
               ),
-            ),
-            const SizedBox(
-              height: 220,
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                children: [
-                  CustomPlaceButton(text: "Online"),
-                  CustomPlaceButton(text: "At home"),
-                  CustomPlaceButton(text: "Anywhere"),
-                ],
+              const SizedBox(
+                height: 220,
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                  children: [
+                    CustomPlaceButton(text: "Online"),
+                    CustomPlaceButton(text: "At home"),
+                    CustomPlaceButton(text: "Anywhere"),
+                  ],
+                ),
               ),
-            ),
-            CustomButton(
-              text: "Next",
-              width: 200,
-              function: () {
-                Navigator.pushNamed(context, "PersonPage");
-              },
-            )
-          ],
+              CustomButton(
+                text: "Next",
+                width: 200,
+                function: () {
+                  Navigator.pushNamed(context, "PersonPage");
+                },
+              )
+            ],
+          ),
         ),
       ),
     );

@@ -22,9 +22,11 @@ class CustomPlaceButton extends StatelessWidget {
         borderRadius: BorderRadius.circular(20),
         color: optionColor,
       ),
-      child: Text(
-        text,
-        style: blackTextStyle.copyWith(fontSize: 18, fontWeight: medium),
+      child: Center(
+        child: Text(
+          text,
+          style: blackTextStyle.copyWith(fontSize: 24, fontWeight: semiBold),
+        ),
       ),
     );
   }

@@ -8,12 +8,13 @@
 
 
 - Bug Fixing    
-    - Create place page
-    - Create person page
-    - Create result page
-    - Create Activity page
+    
 
 
 - Done
     - Create start page
     - Create time page
+    - Create place page
+    - Create person page
+    - Create result page
+    - Create Activity page
