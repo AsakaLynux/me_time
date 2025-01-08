@@ -5,9 +5,14 @@ import '../../theme/fonts.dart';
 import '../../theme/image.dart';
 import '../widget/custom_button.dart';
 
-class TimePage extends StatelessWidget {
+class TimePage extends StatefulWidget {
   const TimePage({super.key});
 
+  @override
+  State<TimePage> createState() => _TimePageState();
+}
+
+class _TimePageState extends State<TimePage> {
   @override
   Widget build(BuildContext context) {
     Widget timeHours() {
