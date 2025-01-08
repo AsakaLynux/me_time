@@ -13,6 +13,36 @@ class TimePage extends StatefulWidget {
 }
 
 class _TimePageState extends State<TimePage> {
+  int hour = 0;
+  int minute = 0;
+  void _hourIncrement() {
+    setState(() {
+      hour++;
+    });
+  }
+
+  void _hourDecrement() {
+    setState(() {
+      hour--;
+    });
+  }
+
+  void _minuteIncrement() {
+    setState(() {
+      minute++;
+    });
+  }
+
+  void _minuteDecrement() {
+    setState(() {
+      minute--;
+    });
+  }
+
+  String formatCounter(int number) {
+    return number.toString().padLeft(2, '0');
+  }
+
   @override
   Widget build(BuildContext context) {
     Widget timeHours() {
@@ -21,31 +51,18 @@ class _TimePageState extends State<TimePage> {
         child: Row(
           children: [
             Container(
-              width: 34,
+              width: 73,
               height: 49,
               decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(8), color: whiteColor),
               child: Center(
                 child: Text(
-                  "0",
+                  formatCounter(hour),
                   style: timeTextStyle.copyWith(fontSize: 30),
                 ),
               ),
             ),
-            const SizedBox(width: 5),
-            Container(
-              width: 34,
-              height: 49,
-              decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(8), color: whiteColor),
-              child: Center(
-                child: Text(
-                  "1",
-                  style: timeTextStyle.copyWith(fontSize: 30),
-                ),
-              ),
-            ),
-            const SizedBox(width: 10),
+            const SizedBox(width: 15),
             Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
@@ -56,7 +73,9 @@ class _TimePageState extends State<TimePage> {
                 Row(
                   children: [
                     GestureDetector(
-                      onTap: () {},
+                      onTap: () {
+                        if (hour > 0) _hourDecrement();
+                      },
                       child: Image.asset(
                         minusIcon,
                         color: blackText,
@@ -64,9 +83,12 @@ class _TimePageState extends State<TimePage> {
                         height: 18,
                       ),
                     ),
-                    const SizedBox(width: 14),
+                    const SizedBox(width: 25),
                     GestureDetector(
-                      onTap: () {},
+                      onTap: () {
+                        if (hour >= 24) hour = 0;
+                        _hourIncrement();
+                      },
                       child: Image.asset(
                         plusIcon,
                         color: blackText,
@@ -89,31 +111,18 @@ class _TimePageState extends State<TimePage> {
         child: Row(
           children: [
             Container(
-              width: 34,
+              width: 73,
               height: 49,
               decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(8), color: whiteColor),
               child: Center(
                 child: Text(
-                  "0",
+                  formatCounter(minute),
                   style: timeTextStyle.copyWith(fontSize: 30),
                 ),
               ),
             ),
-            const SizedBox(width: 5),
-            Container(
-              width: 34,
-              height: 49,
-              decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(8), color: whiteColor),
-              child: Center(
-                child: Text(
-                  "0",
-                  style: timeTextStyle.copyWith(fontSize: 30),
-                ),
-              ),
-            ),
-            const SizedBox(width: 10),
+            const SizedBox(width: 15),
             Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
@@ -124,7 +133,9 @@ class _TimePageState extends State<TimePage> {
                 Row(
                   children: [
                     GestureDetector(
-                      onTap: () {},
+                      onTap: () {
+                        if (minute > 0) _minuteDecrement();
+                      },
                       child: Image.asset(
                         minusIcon,
                         color: blackText,
@@ -132,9 +143,11 @@ class _TimePageState extends State<TimePage> {
                         height: 18,
                       ),
                     ),
-                    const SizedBox(width: 14),
+                    const SizedBox(width: 25),
                     GestureDetector(
-                      onTap: () {},
+                      onTap: () {
+                        if (minute < 60) _minuteIncrement();
+                      },
                       child: Image.asset(
                         plusIcon,
                         color: blackText,
@@ -174,7 +187,7 @@ class _TimePageState extends State<TimePage> {
                 ),
                 child: Center(
                   child: SizedBox(
-                    width: 172,
+                    width: 180,
                     height: 117,
                     child: Column(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,

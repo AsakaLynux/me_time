@@ -1,5 +1,5 @@
 - Development
-    - Create count + or - for set hour or minute in time page
+    - Create count + or - in person page
 
 
 - Testing
@@ -12,9 +12,11 @@
 
 
 - Done
+    - Create count + or - for set hour or minute in time page
     - Create start page
     - Create time page
     - Create place page
     - Create person page
     - Create result page
     - Create Activity page
+    
