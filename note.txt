@@ -1,10 +1,9 @@
 - Development
-    - Create count + or - in person page
+    
 
 
 - Testing
-
-
+    - Change the counter method with drowdown
 
 
 - Bug Fixing    

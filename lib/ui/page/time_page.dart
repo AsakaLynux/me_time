@@ -1,4 +1,6 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:time_picker_spinner_pop_up/time_picker_spinner_pop_up.dart';
 
 import '../../theme/color.dart';
 import '../../theme/fonts.dart';
@@ -46,62 +48,69 @@ class _TimePageState extends State<TimePage> {
   @override
   Widget build(BuildContext context) {
     Widget timeHours() {
-      return SizedBox(
-        height: 50,
-        child: Row(
-          children: [
-            Container(
-              width: 73,
-              height: 49,
-              decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(8), color: whiteColor),
-              child: Center(
-                child: Text(
-                  formatCounter(hour),
-                  style: timeTextStyle.copyWith(fontSize: 30),
-                ),
-              ),
-            ),
-            const SizedBox(width: 15),
-            Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Text(
-                  "hour(s)",
-                  style: blackTextStyle.copyWith(fontSize: 18),
-                ),
-                Row(
-                  children: [
-                    GestureDetector(
-                      onTap: () {
-                        if (hour > 0) _hourDecrement();
-                      },
-                      child: Image.asset(
-                        minusIcon,
-                        color: blackText,
-                        width: 18,
-                        height: 18,
-                      ),
-                    ),
-                    const SizedBox(width: 25),
-                    GestureDetector(
-                      onTap: () {
-                        if (hour >= 24) hour = 0;
-                        _hourIncrement();
-                      },
-                      child: Image.asset(
-                        plusIcon,
-                        color: blackText,
-                        width: 18,
-                        height: 18,
-                      ),
-                    ),
-                  ],
-                )
-              ],
-            )
-          ],
-        ),
+      // return SizedBox(
+      //   height: 50,
+      //   child: Row(
+      //     children: [
+      //       Container(
+      //         width: 73,
+      //         height: 49,
+      //         decoration: BoxDecoration(
+      //             borderRadius: BorderRadius.circular(8), color: whiteColor),
+      //         child: Center(
+      //           child: Text(
+      //             formatCounter(hour),
+      //             style: timeTextStyle.copyWith(fontSize: 30),
+      //           ),
+      //         ),
+      //       ),
+      //       const SizedBox(width: 15),
+      //       Column(
+      //         crossAxisAlignment: CrossAxisAlignment.start,
+      //         children: [
+      //           Text(
+      //             "hour(s)",
+      //             style: blackTextStyle.copyWith(fontSize: 18),
+      //           ),
+      //           Row(
+      //             children: [
+      //               GestureDetector(
+      //                 onTap: () {
+      //                   if (hour > 0) _hourDecrement();
+      //                 },
+      //                 child: Image.asset(
+      //                   minusIcon,
+      //                   color: blackText,
+      //                   width: 18,
+      //                   height: 18,
+      //                 ),
+      //               ),
+      //               const SizedBox(width: 25),
+      //               GestureDetector(
+      //                 onTap: () {
+      //                   if (hour >= 24) hour = 0;
+      //                   _hourIncrement();
+      //                 },
+      //                 child: Image.asset(
+      //                   plusIcon,
+      //                   color: blackText,
+      //                   width: 18,
+      //                   height: 18,
+      //                 ),
+      //               ),
+      //             ],
+      //           )
+      //         ],
+      //       )
+      //     ],
+      //   ),
+      // );
+      return TimePickerSpinnerPopUp(
+        mode: CupertinoDatePickerMode.time,
+        initTime: DateTime.now(),
+        onChange: (dateTime) {
+          // Implement your logic with select dateTime
+        },
       );
     }
 
