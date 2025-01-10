@@ -48,7 +48,7 @@ class StartPage extends StatelessWidget {
               CustomButton(
                 width: 200,
                 text: "Next",
-                function: () => Navigator.pushNamed(context, "TimePage"),
+                function: () => Navigator.pushNamed(context, "InputPage"),
               )
             ],
           ),

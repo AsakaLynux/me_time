@@ -1,9 +1,10 @@
 - Development
-    
+    - Make a list of recommendation
+    - Make AI for generate recommendation base on duration, location, attandance. And have output image, title, duration, location, attandance
 
 
 - Testing
-    - Change the counter method with drowdown
+    
 
 
 - Bug Fixing    
@@ -11,6 +12,7 @@
 
 
 - Done
+    - Change the counter method with drowdown
     - Create count + or - for set hour or minute in time page
     - Create start page
     - Create time page

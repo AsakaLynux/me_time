@@ -1,11 +1,8 @@
 import 'package:flutter/material.dart';
 
 import 'ui/page/activity_page.dart';
-import 'ui/page/person_page.dart';
-import 'ui/page/place_page.dart';
 import 'ui/page/start_page.dart';
-import 'ui/page/time_page.dart';
-import 'ui/page/result_page.dart';
+import 'ui/page/input_page.dart';
 
 void main() {
   runApp(MaterialApp(
@@ -13,10 +10,7 @@ void main() {
     // home: const WelcomePage(),
     routes: {
       '/': (context) => const StartPage(),
-      'TimePage': (context) => const TimePage(),
-      'PlacePage': (context) => const PlacePage(),
-      'PersonPage': (context) => const PersonPage(),
-      'ResultPage': (context) => const ResultPage(),
+      'InputPage': (context) => const InputPage(),
       'ActivityPage': (context) => const ActivityPage()
     },
   ));
