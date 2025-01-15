@@ -19,7 +19,7 @@ class _InputPageState extends State<InputPage> {
   int _selectedHours = 0;
   int _selectedMinutes = 0;
   int _selectedAttendace = 0;
-  List<String> Locations = [
+  List<String> locations = [
     "At home",
     "Online",
     "Anywhere",
@@ -164,11 +164,11 @@ class _InputPageState extends State<InputPage> {
               onSelectedItemChanged: (index) {
                 setState(() {
                   _selectedLocation = index;
-                  defaultLocation = Locations[_selectedLocation];
+                  defaultLocation = locations[_selectedLocation];
                 });
               },
-              children: List<Widget>.generate(Locations.length,
-                  (index) => Center(child: Text(Locations[index])))),
+              children: List<Widget>.generate(locations.length,
+                  (index) => Center(child: Text(locations[index])))),
         );
       },
     );
@@ -178,6 +178,7 @@ class _InputPageState extends State<InputPage> {
   Widget build(BuildContext context) {
     Widget textRecommendation() {
       return RichText(
+        textAlign: TextAlign.center,
         text: TextSpan(
           text: "We will recommend the ",
           style: blackTextStyle.copyWith(
@@ -323,10 +324,9 @@ class _InputPageState extends State<InputPage> {
     return Scaffold(
       backgroundColor: backgroundColor,
       body: Center(
-        child: Container(
+        child: SizedBox(
           width: 325,
           height: 550,
-          margin: const EdgeInsets.symmetric(horizontal: 25),
           child: Column(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [

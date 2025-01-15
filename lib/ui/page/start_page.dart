@@ -13,35 +13,39 @@ class StartPage extends StatelessWidget {
     return Scaffold(
       backgroundColor: backgroundColor,
       body: Center(
-        child: Container(
+        child: SizedBox(
+          width: 325,
           height: 550,
-          margin: const EdgeInsets.symmetric(horizontal: 27),
           child: Column(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            crossAxisAlignment: CrossAxisAlignment.center,
             children: [
-              RichText(
-                text: TextSpan(
-                  text: "We will recommend the ",
-                  style: blackTextStyle.copyWith(
-                    fontSize: 24,
-                    fontWeight: semiBold,
-                  ),
-                  children: [
-                    TextSpan(
-                      text: "right activity ",
-                      style: greenTextStyle.copyWith(
-                        fontSize: 24,
-                        fontWeight: semiBold,
-                      ),
+              Center(
+                child: RichText(
+                  textAlign: TextAlign.center,
+                  text: TextSpan(
+                    text: "We will recommend the ",
+                    style: blackTextStyle.copyWith(
+                      fontSize: 24,
+                      fontWeight: semiBold,
                     ),
-                    TextSpan(
-                      text: "for you.",
-                      style: blackTextStyle.copyWith(
-                        fontSize: 24,
-                        fontWeight: semiBold,
+                    children: [
+                      TextSpan(
+                        text: "right activity ",
+                        style: greenTextStyle.copyWith(
+                          fontSize: 24,
+                          fontWeight: semiBold,
+                        ),
                       ),
-                    )
-                  ],
+                      TextSpan(
+                        text: "for you.",
+                        style: blackTextStyle.copyWith(
+                          fontSize: 24,
+                          fontWeight: semiBold,
+                        ),
+                      )
+                    ],
+                  ),
                 ),
               ),
               Image.asset(reccImage, width: 322, height: 322),

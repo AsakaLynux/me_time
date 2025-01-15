@@ -1,15 +1,85 @@
+import 'dart:convert';
+
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 
 import '../../theme/color.dart';
 import '../../theme/fonts.dart';
-import '../../theme/image.dart';
 import '../widget/custom_button.dart';
 
-class ActivityPage extends StatelessWidget {
+class ActivityPage extends StatefulWidget {
   const ActivityPage({super.key});
 
   @override
+  State<ActivityPage> createState() => _ActivityPageState();
+}
+
+class _ActivityPageState extends State<ActivityPage> {
+  List dataSet = [];
+
+  Future<void> readDataSet() async {
+    final String response = await rootBundle.loadString("dataset/dataset.json");
+    final Map<String, dynamic> data = jsonDecode(response);
+    setState(() {
+      dataSet = data["data"];
+    });
+  }
+
+  @override
+  void initState() {
+    super.initState();
+    readDataSet();
+  }
+
+  @override
   Widget build(BuildContext context) {
+    Widget card(String text) {
+      return Container(
+        // height: 289,
+        width: 200,
+        padding: const EdgeInsets.all(13),
+        margin: const EdgeInsets.symmetric(horizontal: 20),
+        decoration: BoxDecoration(
+          borderRadius: BorderRadius.circular(20),
+          color: clockColor,
+          border: Border.all(
+            color: cardBackground,
+          ),
+        ),
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            // Container(
+            //   width: 244,
+            //   height: 144,
+            //   decoration: BoxDecoration(
+            //     borderRadius: BorderRadius.circular(10),
+            //     color: Colors.white,
+            //   ),
+            // ),
+            Text(
+              text,
+              style: blackTextStyle.copyWith(
+                fontSize: 18,
+                fontWeight: bold,
+              ),
+              textAlign: TextAlign.center,
+            ),
+          ],
+        ),
+      );
+    }
+
+    Widget startPageButton() {
+      return CustomButton(
+        text: "Back to start page",
+        width: 200,
+        function: () {
+          Navigator.pushNamed(context, "/");
+        },
+      );
+    }
+
     return Scaffold(
       backgroundColor: backgroundColor,
       body: Center(
@@ -25,92 +95,18 @@ class ActivityPage extends StatelessWidget {
                   "We recommend doing these things",
                   style: blackTextStyle.copyWith(
                       fontSize: 24, fontWeight: semiBold),
+                  textAlign: TextAlign.center,
                 ),
               ),
               SizedBox(
-                width: 355,
-                height: 289,
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    Container(
-                      width: 30,
-                      height: 30,
-                      decoration: BoxDecoration(
-                        shape: BoxShape.circle,
-                        color: buttonBackgroundColor,
-                        image: DecorationImage(
-                          image: AssetImage(leftIcon),
-                        ),
-                      ),
-                    ),
-                    Container(
-                      width: 273,
-                      height: 289,
-                      padding: const EdgeInsets.all(13),
-                      decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(20),
-                        color: clockColor,
-                        border: Border.all(
-                          color: cardBackground,
-                        ),
-                      ),
-                      child: Column(
-                        children: [
-                          Container(
-                            width: 244,
-                            height: 144,
-                            decoration: BoxDecoration(
-                              borderRadius: BorderRadius.circular(10),
-                              color: Colors.white,
-                            ),
-                          ),
-                          Text(
-                            "Bake chocolate chip cookies",
-                            style: blackTextStyle.copyWith(
-                              fontSize: 18,
-                              fontWeight: medium,
-                            ),
-                          ),
-                          RichText(
-                            text: TextSpan(
-                              text:
-                                  "follow this easy, single serve recipe from ",
-                              style: blackTextStyle,
-                              children: [
-                                TextSpan(
-                                  text: "chelsea’s messy apron",
-                                  style: blackTextStyle.copyWith(
-                                    decoration: TextDecoration.underline,
-                                  ),
-                                ),
-                              ],
-                            ),
-                          ),
-                        ],
-                      ),
-                    ),
-                    Container(
-                      width: 30,
-                      height: 30,
-                      decoration: BoxDecoration(
-                        shape: BoxShape.circle,
-                        color: buttonBackgroundColor,
-                        image: DecorationImage(
-                          image: AssetImage(rightIcon),
-                        ),
-                      ),
-                    ),
-                  ],
-                ),
+                height: 200,
+                child: ListView.builder(
+                    itemCount: dataSet.length,
+                    scrollDirection: Axis.horizontal,
+                    itemBuilder: (context, index) =>
+                        card(dataSet[index]["title"])),
               ),
-              CustomButton(
-                text: "Back to start page",
-                width: 200,
-                function: () {
-                  Navigator.pushNamed(context, "/");
-                },
-              )
+              startPageButton(),
             ],
           ),
         ),
