@@ -1,38 +1,43 @@
-import 'dart:convert';
-
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 
+import '../../db/dataset.dart';
 import '../../theme/color.dart';
 import '../../theme/fonts.dart';
 import '../widget/custom_button.dart';
 
 class ActivityPage extends StatefulWidget {
-  const ActivityPage({super.key});
+  final String selectedAttendance;
+  final String selectedDuration;
+  final String selectedPlace;
+  const ActivityPage({
+    super.key,
+    this.selectedAttendance = "1 person",
+    this.selectedPlace = "At home",
+    this.selectedDuration = "1 hour",
+  });
 
   @override
   State<ActivityPage> createState() => _ActivityPageState();
 }
 
 class _ActivityPageState extends State<ActivityPage> {
-  List dataSet = [];
-
-  Future<void> readDataSet() async {
-    final String response = await rootBundle.loadString("dataset/dataset.json");
-    final Map<String, dynamic> data = jsonDecode(response);
-    setState(() {
-      dataSet = data["data"];
-    });
-  }
-
-  @override
-  void initState() {
-    super.initState();
-    readDataSet();
+  List<Map<String, String>> recommendActivities() {
+    return activities
+        .where((activity) =>
+            activity["attendance"] == widget.selectedAttendance &&
+            activity["duration"] == widget.selectedDuration &&
+            activity["place"] == widget.selectedPlace)
+        .toList();
   }
 
   @override
   Widget build(BuildContext context) {
+    if (kDebugMode) {
+      print(
+          "${widget.selectedDuration}, ${widget.selectedAttendance}, ${widget.selectedPlace}");
+      print(recommendActivities());
+    }
     Widget card(String text) {
       return Container(
         // height: 289,
@@ -100,11 +105,22 @@ class _ActivityPageState extends State<ActivityPage> {
               ),
               SizedBox(
                 height: 200,
-                child: ListView.builder(
-                    itemCount: dataSet.length,
-                    scrollDirection: Axis.horizontal,
-                    itemBuilder: (context, index) =>
-                        card(dataSet[index]["title"])),
+                // width: 300,
+                child: Center(
+                  child: ListView.builder(
+                      scrollDirection: Axis.horizontal,
+                      itemCount: recommendActivities().length,
+                      itemBuilder: (context, index) {
+                        final activity = recommendActivities()[index];
+                        if (activity.isEmpty) {
+                          return const Center(
+                            child:
+                                Text("We don't have recommandation activity"),
+                          );
+                        }
+                        return card(activity["title"]!);
+                      }),
+                ),
               ),
               startPageButton(),
             ],

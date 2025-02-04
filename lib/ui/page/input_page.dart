@@ -1,4 +1,5 @@
 import 'package:flutter/cupertino.dart';
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
@@ -7,6 +8,7 @@ import '../../theme/fonts.dart';
 import '../../theme/image.dart';
 import '../widget/custom_button.dart';
 import '../widget/custom_place_button.dart';
+import 'activity_page.dart';
 
 class InputPage extends StatefulWidget {
   const InputPage({super.key});
@@ -16,6 +18,10 @@ class InputPage extends StatefulWidget {
 }
 
 class _InputPageState extends State<InputPage> {
+  String selectedAttendance = "";
+  String selectedDuration = "";
+  String selectedPlace = "";
+
   int _selectedHours = 0;
   int _selectedMinutes = 0;
   int _selectedAttendace = 0;
@@ -52,8 +58,21 @@ class _InputPageState extends State<InputPage> {
                     child: Text("Cancel"),
                   ),
                   TextButton(
-                    onPressed: () =>
-                        Navigator.of(context).pop(), // Confirm and close
+                    onPressed: () {
+                      Navigator.of(context).pop();
+
+                      if (_selectedMinutes == 0) {
+                        selectedDuration = "$_selectedHours hour";
+                      } else if (_selectedHours == 0) {
+                        selectedDuration = "$_selectedMinutes minute";
+                      } else {
+                        selectedDuration =
+                            "$_selectedHours hour $_selectedMinutes minute";
+                      }
+                      if (kDebugMode) {
+                        print(selectedDuration);
+                      }
+                    },
                     child: Text("OK"),
                   ),
                 ],
@@ -137,7 +156,12 @@ class _InputPageState extends State<InputPage> {
                   } else {
                     setState(() {
                       _selectedAttendace = attandance;
+                      selectedAttendance = "$_selectedAttendace person";
                     });
+                    if (kDebugMode) {
+                      print(selectedAttendance);
+                      ;
+                    }
                     Navigator.pop(context);
                   }
                 }
@@ -157,18 +181,53 @@ class _InputPageState extends State<InputPage> {
       builder: (context) {
         return SizedBox(
           height: 200,
-          child: CupertinoPicker(
-              itemExtent: 40,
-              scrollController:
-                  FixedExtentScrollController(initialItem: _selectedLocation),
-              onSelectedItemChanged: (index) {
-                setState(() {
-                  _selectedLocation = index;
-                  defaultLocation = locations[_selectedLocation];
-                });
-              },
-              children: List<Widget>.generate(locations.length,
-                  (index) => Center(child: Text(locations[index])))),
+          child: Column(
+            children: [
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  TextButton(
+                    onPressed: () {
+                      Navigator.of(context).pop();
+                      setState(() {
+                        defaultLocation = "Select Location";
+                      });
+                    }, // Cancel
+                    child: Text("Cancel"),
+                  ),
+                  TextButton(
+                    onPressed: () {
+                      Navigator.of(context).pop();
+                      selectedPlace = locations[_selectedLocation];
+                      setState(() {
+                        defaultLocation = selectedPlace;
+                      });
+                      if (kDebugMode) {
+                        print(selectedPlace);
+                      }
+                    },
+                    child: Text("OK"),
+                  ),
+                ],
+              ),
+              Expanded(
+                child: CupertinoPicker(
+                  itemExtent: 40,
+                  scrollController: FixedExtentScrollController(
+                      initialItem: _selectedLocation),
+                  onSelectedItemChanged: (index) {
+                    setState(() {
+                      _selectedLocation = index;
+                    });
+                  },
+                  children: List<Widget>.generate(
+                    locations.length,
+                    (index) => Center(child: Text(locations[index])),
+                  ),
+                ),
+              ),
+            ],
+          ),
         );
       },
     );
@@ -316,7 +375,16 @@ class _InputPageState extends State<InputPage> {
         width: 200,
         text: "Finalize",
         function: () {
-          Navigator.pushNamed(context, "ActivityPage");
+          Navigator.push(
+            context,
+            MaterialPageRoute(
+              builder: (context) => ActivityPage(
+                selectedAttendance: selectedAttendance,
+                selectedDuration: selectedDuration,
+                selectedPlace: selectedPlace,
+              ),
+            ),
+          );
         },
       );
     }

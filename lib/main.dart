@@ -7,7 +7,7 @@ import 'ui/page/input_page.dart';
 void main() {
   runApp(MaterialApp(
     debugShowCheckedModeBanner: false,
-    // home: const WelcomePage(),
+    // home: const ActivityPage(),
     routes: {
       '/': (context) => const StartPage(),
       'InputPage': (context) => const InputPage(),
