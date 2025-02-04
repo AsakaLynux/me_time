@@ -1,6 +1,4 @@
 - Development
-    - Make AI for generate recommendation base on duration, location, attandance. And have output image, title, duration, location, attandance
-
 
 - Testing
     
@@ -11,6 +9,7 @@
 
 
 - Done
+    - Change dataset from json to dataset dart
     - Make a list of recommendation
     - Change the counter method with drowdown
     - Create count + or - for set hour or minute in time page
