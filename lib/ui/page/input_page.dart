@@ -160,7 +160,6 @@ class _InputPageState extends State<InputPage> {
                     });
                     if (kDebugMode) {
                       print(selectedAttendance);
-                      ;
                     }
                     Navigator.pop(context);
                   }
