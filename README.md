@@ -1,16 +1,20 @@
-# me_time
+# Me Time
 
-A new Flutter project.
+A application to complete PKM KC College course.
 
-## Getting Started
+## Table of contents
+* [General info](#general-info)
+* [Technologies](#technologies)
+* [Demo](#demo)
 
-This project is a starting point for a Flutter application.
+## General info
+This project is simple application to give recommendation base on input user like duration (1 hour, 30 minutes, 1 hour 30 minutes. etc), location (At home, online, anywhere), and person (1 person, 2 persons, 3 persons, etc)
+	
+## Technologies
+Project is created with:
+* Flutter: 3.27.1
+* Java version: 7.0.12
 
-A few resources to get you started if this is your first Flutter project:
+## Demo
+https://github.com/user-attachments/assets/098ea31c-8a44-46cc-b72e-eaaf6703686a
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
-
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
